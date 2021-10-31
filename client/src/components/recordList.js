@@ -30,8 +30,8 @@ export default class RecordList extends Component {
     this.state = { records: [] };
   }
 
- // This method will get the data from the database.
- componentDidMount() {
+  // This method will get the data from the database.
+  componentDidMount() {
     axios
       .get("http://localhost:5000/record/")
       .then((response) => {
@@ -40,17 +40,6 @@ export default class RecordList extends Component {
       .catch(function (error) {
         console.log(error);
       });
-  }
-
-  // This method will delete a record based on the method
-  deleteRecord(id) {
-    axios.delete("http://localhost:5000/" + id).then((response) => {
-      console.log(response.data);
-    });
-
-    this.setState({
-      record: this.state.records.filter((el) => el._id !== id),
-    });
   }
 
   // This method will delete a record based on the method

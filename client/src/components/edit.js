@@ -20,8 +20,8 @@ class Edit extends Component {
       records: [],
     };
   }
-// This will get the record based on the id from the database.
-componentDidMount() {
+  // This will get the record based on the id from the database.
+  componentDidMount() {
     axios
       .get("http://localhost:5000/record/" + this.props.match.params.id)
       .then((response) => {
@@ -55,8 +55,8 @@ componentDidMount() {
     });
   }
  
-// This function will handle the submission.
-onSubmit(e) {
+  // This function will handle the submission.
+  onSubmit(e) {
     e.preventDefault();
     const newEditedperson = {
       person_name: this.state.person_name,
@@ -64,7 +64,7 @@ onSubmit(e) {
       person_level: this.state.person_level,
     };
     console.log(newEditedperson);
-
+ 
     // This will send a post request to update the data in the database.
     axios
       .post(
@@ -72,7 +72,7 @@ onSubmit(e) {
         newEditedperson
       )
       .then((res) => console.log(res.data));
-
+ 
     this.props.history.push("/");
   }
  
